@@ -13,18 +13,10 @@ int k = 0;
 
 static adcsample_t adc_buffer[ADC1_NUM_CHANNELS * ADC1_BUF_DEPTH];
 
-
-/*static const GPTConfig gpt4cfg1 = {
-  .frequency =  100000,
-  .callback  =  NULL,
-  .cr2       =  TIM_CR2_MMS_1,  // MMS = 010 = TRGO on Update Event.
-  .dier      =  0U
- }; */
-
 static void adccallback(ADCDriver *adcp, adcsample_t *buffer, size_t n)
 {
-	adcp = adcp; n = n;
-    k = buffer[0];
+   adcp = adcp; n = n;
+   k = buffer[0];
     //chprintf( (BaseSequentialStream *)&SD7, " %d \n\r", buffer[0], n );
 }
 
@@ -119,7 +111,6 @@ int main(void)
     		//chprintf( (BaseSequentialStream *)&SD7, " %d \n\r", k, 4 );
     		flag = 0;
     	}
-    	pwmEnableChannel(&PWMD3, 2 , k);
     	chThdSleepMilliseconds(5);
     }
 }
